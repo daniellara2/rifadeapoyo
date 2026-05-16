@@ -1,590 +1,212 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>⚽ RIFA DE APOYO ⚽</title>
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(180deg,#ffffff,#dbeafe,#7dd3fc);
-overflow-x:hidden;
-color:#111;
-}
-
-/* PARTICULAS */
-
-body::before{
-content:'';
-position:fixed;
-inset:0;
-background-image:
-radial-gradient(circle,#ffffff 2px,transparent 2px),
-radial-gradient(circle,#bae6fd 3px,transparent 3px);
-background-size:80px 80px;
-animation:mover 12s linear infinite;
-opacity:.4;
-pointer-events:none;
-z-index:-1;
-}
-
-@keyframes mover{
-from{transform:translateY(0px);}
-to{transform:translateY(120px);}
-}
-
-/* HEADER */
-
-header{
-background:linear-gradient(90deg,#1e3a8a,#2563eb,#38bdf8);
-padding:30px 15px;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
-
-.bandera{
-position:absolute;
-inset:0;
-opacity:.15;
-background:
-linear-gradient(
-to bottom,
-#ffffff 0%,
-#ffffff 33%,
-#7dd3fc 33%,
-#7dd3fc 66%,
-#ffffff 66%,
-#ffffff 100%
-);
-}
-
-header h1{
-position:relative;
-font-size:42px;
-font-weight:900;
-color:white;
-text-shadow:
-0 0 10px #fff,
-0 0 20px #38bdf8,
-0 0 30px #2563eb;
-}
-
-header p{
-position:relative;
-margin-top:12px;
-font-size:20px;
-font-weight:bold;
-color:#facc15;
-}
-
-/* INFO */
-
-.info{
-background:rgba(255,255,255,.9);
-margin:15px;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-text-align:center;
-}
-
-.info h2{
-color:#1d4ed8;
-margin-bottom:10px;
-}
-
-.contador{
-margin-top:15px;
-font-size:26px;
-font-weight:bold;
-color:#dc2626;
-}
-
-.nequi{
-margin-top:20px;
-padding:20px;
-background:#ede9fe;
-border-radius:15px;
-font-size:20px;
-font-weight:bold;
-color:#4c1d95;
-}
-
-.nequi a{
-display:inline-block;
-margin-top:15px;
-padding:12px 18px;
-background:#4c1d95;
-color:white;
-border-radius:10px;
-text-decoration:none;
-}
-
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-padding:15px;
-}
-
-.numero{
-border:none;
-border-radius:15px;
-padding:18px 0;
-font-size:20px;
-font-weight:bold;
-background:white;
-cursor:pointer;
-transition:.2s;
-box-shadow:0 2px 10px rgba(0,0,0,.15);
-}
-
-.numero:hover{
-transform:scale(1.05);
-background:#dbeafe;
-}
-
-.ocupado{
-background:#ef4444 !important;
-color:white;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.modal-content{
-background:white;
-width:90%;
-max-width:400px;
-padding:20px;
-border-radius:20px;
-}
-
-.modal-content h2{
-text-align:center;
-margin-bottom:15px;
-}
-
-input{
-width:100%;
-padding:14px;
-margin-top:12px;
-border-radius:10px;
-border:1px solid #ccc;
-font-size:16px;
-}
-
-.btn{
-width:100%;
-margin-top:15px;
-padding:14px;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-color:white;
-}
-
-.btn-verde{
-background:#16a34a;
-}
-
-.btn-rojo{
-background:#dc2626;
-}
-
-/* ANIMACION */
-
-#gracias{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.8);
-z-index:9999;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-color:white;
-text-align:center;
-}
-
-#gracias h1{
-font-size:45px;
-color:#38bdf8;
-text-shadow:0 0 20px white;
-animation:zoom 1s infinite alternate;
-}
-
-@keyframes zoom{
-from{transform:scale(1);}
-to{transform:scale(1.1);}
-}
-
-/* FOOTER */
-
-footer{
-padding:25px;
-text-align:center;
-background:linear-gradient(90deg,#1e3a8a,#2563eb,#38bdf8);
-color:white;
-font-size:18px;
-font-weight:bold;
-margin-top:20px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:600px){
-
-.grid{
-grid-template-columns:repeat(4,1fr);
-}
-
-.numero{
-font-size:18px;
-}
-
-header h1{
-font-size:32px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(180deg,#fff,#dbeafe,#7dd3fc);color:#111}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#fff 2px,transparent 2px),radial-gradient(circle,#bae6fd 3px,transparent 3px);background-size:80px 80px;animation:mover 12s linear infinite;opacity:.4;pointer-events:none;z-index:-1}
+@keyframes mover{from{transform:translateY(0)}to{transform:translateY(120px)}}
+header{background:linear-gradient(90deg,#1e3a8a,#2563eb,#38bdf8);padding:30px 15px;text-align:center;position:relative;overflow:hidden}
+.bandera{position:absolute;inset:0;opacity:.15;background:linear-gradient(to bottom,#fff 0 33%,#7dd3fc 33% 66%,#fff 66% 100%)}
+header h1{position:relative;font-size:42px;font-weight:900;color:#fff;text-shadow:0 0 10px #fff,0 0 20px #38bdf8,0 0 30px #2563eb}
+header p{position:relative;margin-top:12px;font-size:20px;font-weight:bold;color:#facc15}
+.info{background:rgba(255,255,255,.9);margin:15px;padding:20px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.1);text-align:center}
+.info h2{color:#1d4ed8;margin-bottom:10px}
+.contador{margin-top:15px;font-size:26px;font-weight:bold;color:#dc2626}
+.nequi{margin-top:20px;padding:20px;background:#ede9fe;border-radius:15px;font-size:20px;font-weight:bold;color:#4c1d95}
+.nequi a{display:inline-block;margin-top:15px;padding:12px 18px;background:#4c1d95;color:#fff;border-radius:10px;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:15px}
+.numero{border:none;border-radius:15px;padding:18px 0;font-size:20px;font-weight:bold;background:#fff;cursor:pointer;transition:.2s;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.numero:hover{transform:scale(1.05);background:#dbeafe}
+.ocupado{background:#ef4444!important;color:#fff}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:999}
+.modal-content{background:#fff;width:90%;max-width:400px;padding:20px;border-radius:20px}
+.modal-content h2{text-align:center;margin-bottom:15px}
+input{width:100%;padding:14px;margin-top:12px;border-radius:10px;border:1px solid #ccc;font-size:16px}
+.btn{width:100%;margin-top:15px;padding:14px;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;color:#fff}
+.btn-verde{background:#16a34a}.btn-rojo{background:#dc2626}
+#gracias{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;justify-content:center;align-items:center;flex-direction:column;color:#fff;text-align:center}
+#gracias h1{font-size:45px;color:#38bdf8;text-shadow:0 0 20px #fff;animation:zoom 1s infinite alternate}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.1)}}
+footer{padding:25px;text-align:center;background:linear-gradient(90deg,#1e3a8a,#2563eb,#38bdf8);color:#fff;font-size:18px;font-weight:bold;margin-top:20px}
+@media(max-width:600px){.grid{grid-template-columns:repeat(4,1fr)}.numero{font-size:18px}header h1{font-size:32px}}
 </style>
 </head>
-
 <body>
-
 <header>
-
-<div class="bandera"></div>
-
-<h1>⚽ RIFA DE APOYO ⚽</h1>
-
-<p>🔥 JUEGA • APOYA • GANA 🔥</p>
-
+  <div class="bandera"></div>
+  <h1>⚽ RIFA DE APOYO ⚽</h1>
+  <p>🔥 JUEGA • APOYA • GANA 🔥</p>
 </header>
 
 <div class="info">
-
-<h2>📅 Sorteo Oficial</h2>
-
-<p><strong>Jueves 21 de 2026 con el Sinuano Día</strong></p>
-
-<div class="contador" id="contador"></div>
-
-<div class="nequi">
-
-💜 Nequi:
-<br>
-3007569833
-
-<br><br>
-
-📸 Envía la captura al WhatsApp:
-<br>
-📲 3104327861
-
-<br><br>
-
-<a href="https://clientes.nequi.com.co/recargas" target="_blank">
-Ir a pagar con Nequi
-</a>
-
+  <h2>📅 Sorteo Oficial</h2>
+  <p><strong>Jueves 21 de 2026 con el Sinuano Día</strong></p>
+  <div class="contador" id="contador"></div>
+  <div class="nequi">
+    💜 Nequi:<br />3007569833
+    <br /><br />📸 Envía la captura al WhatsApp:<br />📲 3104327861
+    <br /><br />
+    <a href="https://clientes.nequi.com.co/recargas" target="_blank">Ir a pagar con Nequi</a>
+  </div>
 </div>
-
-</div>
-
-<!-- GRID -->
 
 <div class="grid" id="grid"></div>
 
-<!-- MODAL -->
-
 <div class="modal" id="modal">
-
-<div class="modal-content">
-
-<h2 id="tituloNumero"></h2>
-
-<input type="text" id="nombre" placeholder="Tu nombre">
-
-<input type="tel" id="telefono" placeholder="Tu número">
-
-<button class="btn btn-verde" id="btnGuardar">
-Reservar Número
-</button>
-
-<button class="btn btn-rojo" id="btnCancelar">
-Cancelar
-</button>
-
+  <div class="modal-content">
+    <h2 id="tituloNumero"></h2>
+    <input type="text" id="nombre" placeholder="Tu nombre" />
+    <input type="tel" id="telefono" placeholder="Tu número" />
+    <button class="btn btn-verde" id="btnGuardar">Reservar Número</button>
+    <button class="btn btn-rojo" id="btnCancelar">Cancelar</button>
+  </div>
 </div>
-
-</div>
-
-<!-- ANIMACION -->
 
 <div id="gracias">
-
-<h1>⚽ GRACIAS POR EL APOYO ⚽</h1>
-
-<p style="margin-top:20px;font-size:22px;">
-🙏 Tu ayuda impulsa sueños deportivos
-</p>
-
+  <h1>⚽ GRACIAS POR EL APOYO ⚽</h1>
+  <p style="margin-top:20px;font-size:22px;">🙏 Tu ayuda impulsa sueños deportivos</p>
 </div>
 
-<footer>
-Gracias por apoyar el deporte ❤️
-</footer>
+<footer>Gracias por apoyar el deporte ❤️</footer>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 <script>
-
-const grid=document.getElementById('grid');
-const modal=document.getElementById('modal');
-const tituloNumero=document.getElementById('tituloNumero');
-
-let numeroSeleccionado=null;
-
-let numerosTomados={};
-
-/* CREAR NUMEROS */
-
-function crearNumeros(){
-
-grid.innerHTML='';
-
-for(let i=0;i<=99;i++){
-
-const numero=i.toString().padStart(2,'0');
-
-const btn=document.createElement('button');
-
-btn.className='numero';
-
-btn.innerHTML=numero;
-
-if(numerosTomados[numero]){
-
-btn.classList.add('ocupado');
-
-btn.innerHTML=`${numero}<br>✔`;
-
-btn.onclick=function(){
-
-alert(
-`❌ El número ${numero} ya fue escogido.\n\n🔥 Prueba suerte con otro número`
-);
-
+const firebaseConfig = {
+  apiKey: "AIzaSyA4M1IlBwZ66ivdkPxsdgMQj_2CdkOkJ3w",
+  authDomain: "rifa-futbol.firebaseapp.com",
+  databaseURL: "https://rifa-futbol-1c518-default-rtdb.firebaseio.com",
+  projectId: "rifa-futbol",
+  storageBucket: "rifa-futbol.firebasestorage.app",
+  messagingSenderId: "960740116376",
+  appId: "1:960740116376:web:36d3f04efe1695fd728ded",
+  measurementId: "G-6GF21FZ95M"
 };
 
-}else{
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const numerosRef = db.ref('numeros');
 
-btn.onclick=function(){
+const grid = document.getElementById('grid');
+const modal = document.getElementById('modal');
+const tituloNumero = document.getElementById('tituloNumero');
+let numeroSeleccionado = null;
+let numerosTomados = {};
 
-abrirModal(numero);
+function crearNumeros() {
+  grid.innerHTML = '';
+  for (let i = 0; i <= 99; i++) {
+    const numero = i.toString().padStart(2, '0');
+    const btn = document.createElement('button');
+    btn.className = 'numero';
+    btn.innerHTML = numero;
 
+    if (numerosTomados[numero]) {
+      btn.classList.add('ocupado');
+      btn.innerHTML = `${numero}<br>✔`;
+      btn.onclick = () => alert(`❌ El número ${numero} ya fue escogido.\n\n🔥 Prueba suerte con otro número`);
+    } else {
+      btn.onclick = () => abrirModal(numero);
+    }
+
+    grid.appendChild(btn);
+  }
+}
+
+function abrirModal(numero) {
+  numeroSeleccionado = numero;
+  tituloNumero.textContent = `Número ${numero}`;
+  modal.style.display = 'flex';
+}
+
+function cerrarModal() {
+  modal.style.display = 'none';
+  document.getElementById('nombre').value = '';
+  document.getElementById('telefono').value = '';
+}
+
+document.getElementById('btnCancelar').onclick = cerrarModal;
+
+document.getElementById('btnGuardar').onclick = function () {
+  const nombre = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+
+  if (!nombre || !telefono) {
+    alert('Completa todos los datos');
+    return;
+  }
+
+  if (numerosTomados[numeroSeleccionado]) {
+    alert(`❌ El número ${numeroSeleccionado} ya fue escogido.\n\n🔥 Prueba suerte con otro número`);
+    cerrarModal();
+    return;
+  }
+
+  const datos = {
+    nombre,
+    telefono,
+    numero: numeroSeleccionado,
+    fecha: Date.now()
+  };
+
+  numerosRef.child(numeroSeleccionado).set(datos)
+    .then(() => {
+      cerrarModal();
+      mostrarGracias();
+
+      const mensajeAdmin = `🚨 NUEVO NÚMERO RESERVADO 🚨\n\n👤 ${nombre}\n\n📞 ${telefono}\n\n🔢 Número: ${numeroSeleccionado}`;
+      window.open(`https://wa.me/573104327861?text=${encodeURIComponent(mensajeAdmin)}`, '_blank');
+
+      setTimeout(() => {
+        const mensajeCliente = `🎉 Hola ${nombre}\n\n✅ Tu número reservado es: ${numeroSeleccionado}\n\n💜 Nequi:\n3007569833\n\n📸 Envía la captura del pago al WhatsApp:\n3104327861\n\n⚽ Gracias por apoyar el deporte ❤️`;
+        window.open(`https://wa.me/57${telefono}?text=${encodeURIComponent(mensajeCliente)}`, '_blank');
+      }, 1500);
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Error al guardar el número.');
+    });
 };
 
+function mostrarGracias() {
+  const gracias = document.getElementById('gracias');
+  gracias.style.display = 'flex';
+  setTimeout(() => gracias.style.display = 'none', 3000);
 }
 
-grid.appendChild(btn);
+function actualizarContador() {
+  const fechaFinal = new Date('2026-05-21T23:59:59').getTime();
+  const ahora = Date.now();
+  const diferencia = fechaFinal - ahora;
 
+  if (diferencia <= 0) {
+    document.getElementById('contador').textContent = '⏰ La rifa terminó';
+    return;
+  }
+
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+  document.getElementById('contador').textContent = `⏳ ${dias}d ${horas}h ${minutos}m ${segundos}s`;
 }
 
-}
-
-/* ABRIR MODAL */
-
-function abrirModal(numero){
-
-numeroSeleccionado=numero;
-
-tituloNumero.innerHTML=`Número ${numero}`;
-
-modal.style.display='flex';
-
-}
-
-/* CERRAR MODAL */
-
-function cerrarModal(){
-
-modal.style.display='none';
-
-document.getElementById('nombre').value='';
-document.getElementById('telefono').value='';
-
-}
-
-document.getElementById('btnCancelar').onclick=cerrarModal;
-
-/* GUARDAR */
-
-document.getElementById('btnGuardar').onclick=function(){
-
-const nombre=document.getElementById('nombre').value.trim();
-
-const telefono=document.getElementById('telefono').value.trim();
-
-if(!nombre || !telefono){
-
-alert('Completa todos los datos');
-
-return;
-
-}
-
-numerosTomados[numeroSeleccionado]={
-nombre:nombre,
-telefono:telefono
-};
-
-crearNumeros();
-
-cerrarModal();
-
-mostrarGracias();
-
-/* MENSAJE ADMIN */
-
-const mensajeAdmin=
-`🚨 NUEVO NÚMERO RESERVADO 🚨
-
-👤 ${nombre}
-
-📞 ${telefono}
-
-🔢 Número: ${numeroSeleccionado}`;
-
-window.open(
-`https://wa.me/573104327861?text=${encodeURIComponent(mensajeAdmin)}`,
-'_blank'
-);
-
-/* MENSAJE CLIENTE */
-
-setTimeout(function(){
-
-const mensajeCliente=
-`🎉 Hola ${nombre}
-
-✅ Tu número reservado es: ${numeroSeleccionado}
-
-💜 Nequi:
-3007569833
-
-📸 Envía la captura del pago al WhatsApp:
-3104327861
-
-⚽ Gracias por apoyar el deporte ❤️`;
-
-window.open(
-`https://wa.me/57${telefono}?text=${encodeURIComponent(mensajeCliente)}`,
-'_blank'
-);
-
-},1500);
-
-};
-
-/* ANIMACION */
-
-function mostrarGracias(){
-
-const gracias=document.getElementById('gracias');
-
-gracias.style.display='flex';
-
-setTimeout(function(){
-
-gracias.style.display='none';
-
-},3000);
-
-}
-
-/* CONTADOR */
-
-function actualizarContador(){
-
-const fechaFinal=
-new Date('2026-05-21T23:59:59').getTime();
-
-const ahora=
-new Date().getTime();
-
-const diferencia=
-fechaFinal-ahora;
-
-if(diferencia<=0){
-
-document.getElementById('contador').innerHTML=
-'⏰ La rifa terminó';
-
-return;
-
-}
-
-const dias=Math.floor(
-diferencia/(1000*60*60*24)
-);
-
-const horas=Math.floor(
-(diferencia%(1000*60*60*24))
-/
-(1000*60*60)
-);
-
-const minutos=Math.floor(
-(diferencia%(1000*60*60))
-/
-(1000*60)
-);
-
-const segundos=Math.floor(
-(diferencia%(1000*60))
-/
-1000
-);
-
-document.getElementById('contador').innerHTML=
-`⏳ ${dias}d ${horas}h ${minutos}m ${segundos}s`;
-
-}
-
-/* INICIAR */
-
-crearNumeros();
+// Escuchar cambios en tiempo real
+numerosRef.on('value', snapshot => {
+  numerosTomados = snapshot.val() || {};
+  crearNumeros();
+});
 
 actualizarContador();
-
-setInterval(actualizarContador,1000);
-
+setInterval(actualizarContador, 1000);
 </script>
-
 </body>
 </html>
