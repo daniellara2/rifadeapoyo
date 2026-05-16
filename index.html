@@ -361,67 +361,15 @@ Cancelar
 Gracias por apoyar el deporte ❤️
 </footer>
 
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getDatabase,
-ref,
-set,
-onValue
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-/* =========================
-CONFIGURA TU FIREBASE AQUI
-========================= */
-
-const firebaseConfig = {
-
-apiKey: "PEGA_AQUI",
-
-authDomain: "PEGA_AQUI",
-
-databaseURL: "PEGA_AQUI",
-
-projectId: "PEGA_AQUI",
-
-storageBucket: "PEGA_AQUI",
-
-messagingSenderId: "PEGA_AQUI",
-
-appId: "PEGA_AQUI"
-
-};
-
-/* ========================= */
-
-const app = initializeApp(firebaseConfig);
-
-const db = getDatabase(app);
+<script>
 
 const grid=document.getElementById('grid');
 const modal=document.getElementById('modal');
 const tituloNumero=document.getElementById('tituloNumero');
 
-const btnGuardar=document.getElementById('btnGuardar');
-const btnCancelar=document.getElementById('btnCancelar');
-
 let numeroSeleccionado=null;
 
 let numerosTomados={};
-
-/* TIEMPO REAL FIREBASE */
-
-onValue(ref(db,'rifa'), (snapshot)=>{
-
-numerosTomados=snapshot.val() || {};
-
-crearNumeros();
-
-});
 
 /* CREAR NUMEROS */
 
@@ -492,11 +440,11 @@ document.getElementById('telefono').value='';
 
 }
 
-btnCancelar.onclick=cerrarModal;
+document.getElementById('btnCancelar').onclick=cerrarModal;
 
 /* GUARDAR */
 
-btnGuardar.onclick=async function(){
+document.getElementById('btnGuardar').onclick=function(){
 
 const nombre=document.getElementById('nombre').value.trim();
 
@@ -510,27 +458,14 @@ return;
 
 }
 
-/* VALIDAR */
-
-if(numerosTomados[numeroSeleccionado]){
-
-alert('❌ Número ocupado');
-
-return;
-
-}
-
-/* GUARDAR FIREBASE */
-
-await set(
-ref(db,'rifa/'+numeroSeleccionado),
-{
+numerosTomados[numeroSeleccionado]={
 nombre:nombre,
 telefono:telefono
-}
-);
+};
 
-/* ANIMACION */
+crearNumeros();
+
+cerrarModal();
 
 mostrarGracias();
 
@@ -573,8 +508,6 @@ window.open(
 );
 
 },1500);
-
-cerrarModal();
 
 };
 
@@ -642,6 +575,10 @@ document.getElementById('contador').innerHTML=
 `⏳ ${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
 }
+
+/* INICIAR */
+
+crearNumeros();
 
 actualizarContador();
 
